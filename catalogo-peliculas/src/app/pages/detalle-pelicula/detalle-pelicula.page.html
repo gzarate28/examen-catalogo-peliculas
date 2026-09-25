@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de Película</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  @if (pelicula) {
+
+    <ion-card>
+
+      <ion-card-header>
+        <ion-card-title>
+          {{ pelicula.titulo }}
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-item>
+          <ion-label>
+            <strong>Género:</strong>
+            {{ pelicula.genero }}
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <strong>Año:</strong>
+            {{ pelicula.anio }}
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <strong>Duración:</strong>
+            {{ pelicula.duracion }} minutos
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <strong>Director:</strong>
+            {{ pelicula.director }}
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <strong>Descripción:</strong>
+            <p>{{ pelicula.descripcion }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <strong>Estado:</strong>
+
+            @if (pelicula.disponible) {
+              <ion-badge color="success">
+                Disponible
+              </ion-badge>
+            } @else {
+              <ion-badge color="danger">
+                No disponible
+              </ion-badge>
+            }
+
+          </ion-label>
+        </ion-item>
+
+        <ion-button
+          expand="block"
+          (click)="volver()">
+          Volver
+        </ion-button>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  } @else {
+
+    <ion-card>
+      <ion-card-content>
+
+        <p>No se encontró la película.</p>
+
+        <ion-button
+          expand="block"
+          (click)="volver()">
+          Volver
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+
+  }
+
+</ion-content>
